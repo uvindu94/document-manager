@@ -19,11 +19,13 @@
                         @include('documents::user/addnewdoc')
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 p-6">
 
-                        
+                        @include('documents::user/addnewcompany')
+
                     </div>
                 </div>
+                {{-- normal user end  --}}
             </div>
         </div>
     </div>

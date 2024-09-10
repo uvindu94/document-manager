@@ -19,7 +19,8 @@ class AddCompanies extends Migration
                 $table->string('name');
                 $table->string('email');
                 $table->string('contact');
-                // $table->string('user_id');
+                $table->string('user_id');
+                $table->string('sales_officer');
                 $table->timestamps();
     
             });
