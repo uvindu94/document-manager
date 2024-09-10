@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+// use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use Modules\Documents\Http\Controllers\DocumentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    Route::get('/dashboard',[DocumentsController::class,'index']);
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
