@@ -21,8 +21,9 @@
         <div class="form-group">
             <label>Document Category</label>
             <select class="form-control" name="" id="">
-                <option>category a</option>
-                <option>category b</option>
+                @foreach ($all_companies as $item)
+                    <option value="{{$item->id}}">{{ $item->name }}</option>
+                @endforeach
             </select>
         </div>
 

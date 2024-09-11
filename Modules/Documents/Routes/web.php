@@ -11,6 +11,11 @@
 |
 */
 
+// use Illuminate\Routing\Route;
+use Modules\Documents\Http\Controllers\DocumentsController;
+
 Route::prefix('documents')->group(function() {
-    Route::get('/', 'DocumentsController@index');
+    Route::get('/', 'DocumentsController@index')->name('documents.index');
 });
+
+Route::post('/addcompany',[DocumentsController::class,'store'])->name('addnewcompany');

@@ -2,9 +2,12 @@
 
 namespace Modules\Documents\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Modules\Documents\Entities\Sales_officer;
 
 class DocumentsController extends Controller
 {
@@ -14,7 +17,9 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        return view('documents::index');
+        $all_companies=$this->get_companies();
+        $all_salesofc=$this->get_all_sales_officers();
+        return view('documents::index')->with(compact('all_companies','all_salesofc'));
     }
 
     /**
@@ -33,7 +38,32 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData=$request->validate(
+            [
+                "cpny_name"=>'required',
+                "cpny_contact"=>'required',
+                "cpny_email"=>'required | email',
+                "sales_officer"=>'required'
+
+            ]
+            );
+
+            $userId = Auth::id();
+
+            $company=new Company();
+
+            $company->name=$validateData['cpny_name'];
+            $company->email=$validateData['cpny_email'];
+            $company->contact=$validateData['cpny_contact'];
+            $company->user_id=$userId;
+            $company->sales_officer=$validateData['sales_officer'];
+
+            $company->save();
+
+            session()->flash('success','company added');
+
+            return redirect()->route('documents.index');
+            // return view('documents::index');
     }
 
     /**
@@ -75,5 +105,18 @@ class DocumentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function get_companies()
+    {
+        $all_companies=Company::all();
+        return $all_companies;
+    }
+
+    // public function get_company
+    public function get_all_sales_officers()
+    {
+        $all_salesofficers=Sales_officer::all();
+        return $all_salesofficers;
     }
 }
