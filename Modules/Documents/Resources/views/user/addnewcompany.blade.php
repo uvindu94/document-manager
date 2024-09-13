@@ -40,6 +40,7 @@
 </section>
 
 
+
 <script>
     document.getElementById('companyForm').addEventListener('submit', function(e) {
         e.preventDefault(); // Prevent the form from submitting immediately

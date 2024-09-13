@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DocumentsTable extends Migration
+class CreateDocumentCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class DocumentsTable extends Migration
      */
     public function up()
     {
-        //s
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('document_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('company_id');
-            $table->string('path');
-            $table->string('doc_name');
-            $table->string('user_id');
-            $table->string('category');
+            $table->string('catname');
             $table->timestamps();
-
         });
     }
 
@@ -33,7 +27,6 @@ class DocumentsTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('document_categories');
     }
 }

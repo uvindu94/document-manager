@@ -11,11 +11,12 @@
 |
 */
 
-// use Illuminate\Routing\Route;
 use Modules\Documents\Http\Controllers\DocumentsController;
 
 Route::prefix('documents')->group(function() {
     Route::get('/', 'DocumentsController@index')->name('documents.index');
 });
 
-Route::post('/addcompany',[DocumentsController::class,'store'])->name('addnewcompany');
+Route::post('/addcompany',[DocumentsController::class,'storecompany'])->name('addnewcompany');
+
+Route::post('/add_doc',[DocumentsController::class,'store_doc'])->name('add_doc');
