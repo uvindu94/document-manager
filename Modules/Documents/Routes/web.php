@@ -20,3 +20,5 @@ Route::prefix('documents')->group(function() {
 Route::post('/addcompany',[DocumentsController::class,'storecompany'])->name('addnewcompany');
 
 Route::post('/add_doc',[DocumentsController::class,'store_doc'])->name('add_doc');
+
+Route::get('/all_docs',[DocumentsController::class,'get_all_docs'])->name('alldoc');

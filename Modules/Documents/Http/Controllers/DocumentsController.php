@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use League\CommonMark\Node\Block\Document;
 use Modules\Documents\Entities\Document as EntitiesDocument;
 use Modules\Documents\Entities\DocumentCategory;
@@ -149,5 +150,12 @@ class DocumentsController extends Controller
     {
         $all_salesofficers = Sales_officer::all();
         return $all_salesofficers;
+    }
+
+    public function get_all_docs()
+    {
+        $documents = DB::select('SELECT d.id,cp.name AS company,d.doc_name,c.catname,so.name AS salesofficer,d.created_at FROM `documents` d,document_categories c,companies cp , sales_officers so where d.category=c.id AND d.company_id=cp.id AND cp.sales_officer=so.id;');
+
+        return view('documents::alldoc')->with(compact('documents'));
     }
 }
