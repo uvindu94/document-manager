@@ -44,7 +44,7 @@
                                     <td>{{ $item -> catname }}</td>
                                     <td>{{ $item -> salesofficer}}</td>
                                     <td>{{ $item -> created_at }}</td>
-                                    <td>view</td>
+                                    <td><a href="{{ asset('storage/app/public/' . $item->path) }}">view</a></td>
                                 </tr>       
                                     
                                 @endforeach

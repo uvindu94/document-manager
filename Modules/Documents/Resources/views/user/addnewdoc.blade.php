@@ -40,4 +40,10 @@
             <input type="submit" class="btn btn-sm btn-primary">
         </div>
     </form>
+
+@if (session('success_doc'))
+
+<p style="color: green;">{{ session('success_doc') }}</p>
+    
+@endif
 </section>

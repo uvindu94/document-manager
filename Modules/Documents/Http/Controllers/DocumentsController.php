@@ -95,7 +95,9 @@ class DocumentsController extends Controller
         $doc->category = $request['doccat'];
 
         $doc->save();
-        return $request;
+        session()->flash('success_doc', 'Document Added Successfully');
+
+        return redirect()->route('documents.index');
     }
 
     /**
@@ -154,7 +156,7 @@ class DocumentsController extends Controller
 
     public function get_all_docs()
     {
-        $documents = DB::select('SELECT d.id,cp.name AS company,d.doc_name,c.catname,so.name AS salesofficer,d.created_at FROM `documents` d,document_categories c,companies cp , sales_officers so where d.category=c.id AND d.company_id=cp.id AND cp.sales_officer=so.id;');
+        $documents = DB::select('SELECT d.path,d.id,cp.name AS company,d.doc_name,c.catname,so.name AS salesofficer,d.created_at FROM `documents` d,document_categories c,companies cp , sales_officers so where d.category=c.id AND d.company_id=cp.id AND cp.sales_officer=so.id;');
 
         return view('documents::alldoc')->with(compact('documents'));
     }

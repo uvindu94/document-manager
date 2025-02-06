@@ -14,7 +14,7 @@
 use Modules\Documents\Http\Controllers\DocumentsController;
 
 Route::prefix('documents')->group(function() {
-    Route::get('/', 'DocumentsController@index')->name('documents.index');
+    Route::get('/dashboard', 'DocumentsController@index')->name('documents.index');
 });
 
 Route::post('/addcompany',[DocumentsController::class,'storecompany'])->name('addnewcompany');
