@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-   
+
                     {{ __("You're logged in!") }}
 
                 </div>
@@ -31,24 +31,22 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody>
 
 
                                 @foreach ($documents as $item)
-
-                                <tr>
-                                    <td>{{ $item->id}}</td>
-                                    <td>{{ $item->company}}</td>
-                                    <td>{{ $item -> doc_name }}</td>
-                                    <td>{{ $item -> catname }}</td>
-                                    <td>{{ $item -> salesofficer}}</td>
-                                    <td>{{ $item -> created_at }}</td>
-                                    <td><a href="{{ asset('storage/app/public/' . $item->path) }}">view</a></td>
-                                </tr>       
-                                    
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->company }}</td>
+                                        <td>{{ $item->doc_name }}</td>
+                                        <td>{{ $item->catname }}</td>
+                                        <td>{{ $item->salesofficer }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td><a href="{{ asset('storage/' . $item->path) }}">view</a></td>
+                                    </tr>
                                 @endforeach
-                                                     
+
                             </tbody>
                         </table>
 
@@ -60,5 +58,5 @@
     </div>
 
 
-    
+
 </x-app-layout>

@@ -84,6 +84,7 @@ class DocumentsController extends Controller
             // Save the file to a directory and get its path
             $filePath = $request->file('doc')->store('documents', 'public');  // 'documents' is the directory within storage/app/public
 
+
             // Store the path in the database
             $doc->path = $filePath;
         }
